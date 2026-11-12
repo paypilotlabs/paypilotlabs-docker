@@ -1,7 +1,7 @@
 ARG DEBIAN_BASE=trixie
 FROM debian:${DEBIAN_BASE}-slim AS bench
 
-LABEL author=frappé
+LABEL author=PayPilotLabs
 
 ARG GIT_REPO=https://github.com/frappe/bench.git
 ARG GIT_BRANCH=v5.x
