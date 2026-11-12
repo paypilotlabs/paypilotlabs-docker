@@ -1,3 +1,6 @@
+> **PayPilotLabs Docker**: the image build kit for the PayPilotLabs products, forked from
+> [frappe/frappe_docker](https://github.com/frappe/frappe_docker) (MIT). See [NOTICE.md](NOTICE.md).
+
 <div align="center">
   <img src="docs/public/frappe-docker.png" alt="Frappe Docker" width="80" />
   <h1>Frappe Docker</h1>

@@ -3,6 +3,9 @@
 ARG PYTHON_VERSION=3.14
 ARG DEBIAN_BASE=trixie
 FROM python:${PYTHON_VERSION}-slim-${DEBIAN_BASE} AS base
+# PayPilotLabs: cryptography>=48 bundles an OpenSSL whose CPU probe dies with SIGILL on Apple M4
+# under Docker's Linux VM. This skips that probe (only ARM crypto speedups are lost).
+ENV OPENSSL_armcap=0
 
 ARG INSTALL_WKHTMLTOPDF=true
 ARG WKHTMLTOPDF_VERSION=0.12.6.1-3
