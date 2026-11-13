@@ -9,3 +9,5 @@ build their images from `images/custom/Containerfile` in this repository.
 PayPilotLabs changes:
 - `images/custom/Containerfile`, `images/production/Containerfile`: `ENV OPENSSL_armcap=0` in the
   `base` stage, so builds and containers run on Apple M4 under Docker Desktop.
+- `images/custom/Containerfile`: installs Chromium during the build (`bench setup-chrome`), so PDFs and
+  page previews work without a download at runtime.

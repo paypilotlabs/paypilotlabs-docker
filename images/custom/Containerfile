@@ -158,6 +158,11 @@ RUN --mount=type=secret,id=apps_json,target=/opt/frappe/apps.json,uid=1000,gid=0
     /home/frappe/frappe-bench && \
   cd /home/frappe/frappe-bench && \
   echo "{}" > sites/common_site_config.json && \
+  # PayPilotLabs: ship Chromium in the image. The framework's default PDF generator and Builder's
+  # page previews need it; otherwise every container downloads ~250 MB on first use, and that first
+  # PDF fails because the download is only made executable on the next call.
+  bench setup-chrome && \
+  find chromium -name headless_shell -exec chmod 755 {} + && \
   find apps -mindepth 1 -path "*/.git" | xargs rm -fr && \
   chmod -R g=u /home/frappe/frappe-bench
 
