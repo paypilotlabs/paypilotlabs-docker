@@ -158,6 +158,13 @@ RUN --mount=type=secret,id=apps_json,target=/opt/frappe/apps.json,uid=1000,gid=0
     /home/frappe/frappe-bench && \
   cd /home/frappe/frappe-bench && \
   echo "{}" > sites/common_site_config.json && \
+  # PayPilotLabs: point the framework at the Chromium the base stage installed. Its default PDF
+  # generator and Builder's page previews look in ./chromium; without this link every container
+  # downloads its own ~250 MB copy on first use, and that first PDF fails.
+  if [ -x /usr/lib/chromium/chromium-headless-shell ]; then \
+    mkdir -p chromium/chrome-linux && \
+    ln -s /usr/lib/chromium/chromium-headless-shell chromium/chrome-linux/headless_shell; \
+  fi && \
   find apps -mindepth 1 -path "*/.git" | xargs rm -fr && \
   chmod -R g=u /home/frappe/frappe-bench
 
