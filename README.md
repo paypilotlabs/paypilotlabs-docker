@@ -11,14 +11,14 @@ The image build kit for all PayPilotLabs products. It turns the PayPilotLabs fra
 
 ## How it helps your business
 
-- One recipe for every product. A fix made here reaches Helpdesk, CRM, ERP, HRMS, Insights and Builder alike.
+- One recipe for every product. A fix made here reaches Helpdesk, CRM, ERP, HRMS and Insights alike.
 - Builds are repeatable. The same inputs give the same image on any machine.
 - Nothing to set up by hand. A product only says which apps it needs.
 - Secrets stay out of the image. `apps.json` goes in as a BuildKit secret.
 
 ## How it fits with other PayPilotLabs products
 
-Each product (`paypilotlabs-helpdesk`, `-crm`, `-erp`, `-hrms`, `-insights`, `-builder`) has a `docker/build.sh`. That script:
+Each product (`paypilotlabs-helpdesk`, `-crm`, `-erp`, `-hrms`, `-insights`) has a `docker/build.sh`. That script:
 
 1. Clones this repo (branch `main`, or the one in `DOCKER_REF`).
 2. Builds `images/custom/Containerfile` with `paypilotlabs-framework` as the base and the product's `apps.json` on top.
